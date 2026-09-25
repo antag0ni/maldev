@@ -1,0 +1,41 @@
+my-dev-lab/
+├── docs/                                  # Research notes, technique writeups, analysis logs
+├── scripts/                               # Auxiliary utilities
+│   ├── generate_shellcode.py              # Payload generators, encrypters, formatters
+│   └── test_environment.ps1
+├── src/
+│   ├── common/                            # Reusable code and shared definitions
+│   │   ├── include/
+│   │   │   ├── api_resolv.h               # Dynamic API resolution / hashing
+│   │   │   ├── crypto.h                   # XOR, RC4, AES routines
+│   │   │   ├── debug.h                    # Logging macros (okay, info, warn)
+│   │   │   ├── ntdefs.h                   # Undocumented NT types and function prototypes
+│   │   │   └── procs.h                    # Process enumeration / snapshot utilities
+│   │   └── src/
+│   │       ├── api_resolv.c
+│   │       ├── crypto.c
+│   │       └── procs.c
+│   │
+│   ├── loaders/                           # End-to-end runners & delivery pipelines
+│   │   ├── local_runner/
+│   │   │   ├── main.c                     # Basic VirtualAlloc + CreateThread runner
+│   │   │   └── Makefile
+│   │   └── local_runner_xor/
+│   │       ├── main.c                     # In-memory XOR decryption + local execution
+│   │       └── Makefile
+│   │
+│   └── techniques/                        # Isolated technical primitives
+│       ├── injection/
+│       │   ├── inject_pid/
+│       │   │   ├── main.c                 # Classic injection targeting PID via CLI
+│       │   │   └── Makefile
+│       │   └── inject_name/
+│       │       ├── main.c                 # Injection with Toolhelp32 process name lookup
+│       │       └── Makefile
+│       ├── evasion/                       # Future primitives (unhooking, ETW patching)
+│       └── syscalls/                      # Direct / indirect syscall implementations
+│
+├── bin/                                   # Compiled output executables (git-ignored)
+├── .gitignore
+├── CMakeLists.txt                         # Root build file (or top-level Makefile / .sln)
+└── README.md                              # Lab documentation, prerequisites, setup instructions

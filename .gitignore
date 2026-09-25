@@ -1,0 +1,18 @@
+# Build outputs
+bin/
+build/
+*.obj
+*.exe
+*.dll
+*.sys
+*.exp
+*.lib
+
+# Shellcode and artifacts
+*.bin
+*.raw
+
+# IDE configurations
+.vs/
+.vscode/
+*.vcxproj.user
